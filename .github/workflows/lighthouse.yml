@@ -1,0 +1,22 @@
+name: Lighthouse CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  lhci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/monad-website
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm install
+      - run: npm run build
+      - run: npx lhci autorun --collect.staticDistDir=dist --upload.target=filesystem --upload.outputDir=dist/__monad/lighthouse

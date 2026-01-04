@@ -1,0 +1,35 @@
+<!-- monad
+{
+  "title": "__PROJECT_NAME__ — Your new Monad site",
+  "description": "Welcome to your new Monad-powered static site",
+  "layout": "layout.html"
+}
+-->
+<% header.html, { "active": "home" } %>
+
+<main class="container">
+  <section class="hero">
+    <div class="hero__copy">
+      <p class="pill">Built with Monad • Static Site Generator</p>
+      <h1>Welcome to __PROJECT_NAME__</h1>
+      <p class="lede">
+        Your new Monad-powered site is ready! Start building amazing static pages with layouts,
+        partials, and built-in SEO features.
+      </p>
+      <div class="ctaRow">
+        <a class="btn btn--primary" href="/about/">Learn more</a>
+        <a class="btn btn--ghost" href="https://github.com/wynterai/monad" target="_blank">View docs</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid3">
+    <% feature_card.html, { "title": "Layouts & Partials", "desc": "Compose pages from reusable components and layouts." } %>
+    <% feature_card.html, { "title": "SEO Ready", "desc": "Auto-generated sitemaps, robots.txt, and meta tags." } %>
+    <% feature_card.html, { "title": "Build Audits", "desc": "Catch missing titles, descriptions, and accessibility issues." } %>
+  </section>
+
+  <% cta_band.html, { "title": "Ready to start building?", "buttonText": "Get started", "buttonHref": "/about/" } %>
+</main>
+
+<% footer.html %>

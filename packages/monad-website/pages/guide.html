@@ -1,0 +1,304 @@
+<!-- monad
+{
+  "title": "Complete Guide - Monad",
+  "description": "Everything you need to know to master Monad static site generator.",
+  "layout": "layout.html"
+}
+-->
+<% header.html, { "active": "guide" } %>
+
+<main class="container">
+  <div class="guide-header">
+    <h1>The Complete Monad Guide</h1>
+    <p class="lede">From zero to production in minutes</p>
+  </div>
+
+  <nav class="guide-nav">
+    <h2>Quick Navigation</h2>
+    <ul>
+      <li><a href="#getting-started">Getting Started</a></li>
+      <li><a href="#core-concepts">Core Concepts</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#best-practices">Best Practices</a></li>
+      <li><a href="#deployment">Deployment</a></li>
+    </ul>
+  </nav>
+
+  <section id="getting-started" class="guide-section">
+    <h2>Getting Started</h2>
+
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <h3>Installation</h3>
+      <pre class="code-block"><code>npm create monad@latest my-site
+cd my-site
+npm install
+npm run dev</code></pre>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <h3>Project Structure</h3>
+      <pre class="code-block"><code>my-site/
+├── pages/          # Your HTML pages
+├── partials/       # Reusable components
+├── public/         # Static assets
+├── src/            # JS/CSS source
+├── collections.json # Data for loops
+└── vite.config.ts  # Monad config</code></pre>
+    </div>
+  </section>
+
+  <section id="core-concepts" class="guide-section">
+    <h2>Core Concepts</h2>
+
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h3>📄 Pages</h3>
+        <p>HTML files with optional JSON frontmatter for metadata.</p>
+        <a href="/features/" class="concept-link">Learn more →</a>
+      </div>
+      <div class="concept-card">
+        <h3>🧩 Partials</h3>
+        <p>Reusable HTML components with data passing.</p>
+        <a href="/advanced/" class="concept-link">Learn more →</a>
+      </div>
+      <div class="concept-card">
+        <h3>📝 Markdown</h3>
+        <p>Full GFM support with YAML frontmatter.</p>
+        <a href="/markdown-demo/" class="concept-link">See demo →</a>
+      </div>
+      <div class="concept-card">
+        <h3>🔁 Collections</h3>
+        <p>Loop through JSON data in templates.</p>
+        <a href="/collections-demo/" class="concept-link">See examples →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="guide-section">
+    <h2>Feature Configuration</h2>
+
+    <div class="feature-tabs">
+      <div class="tab-content">
+        <h3>Performance Optimization</h3>
+        <pre class="code-block"><code>// vite.config.ts
+monad({
+  performance: {
+    enabled: true,
+    preloadCriticalCss: true,
+    addFetchPriority: true,
+    lazyLoadImages: true
+  }
+})</code></pre>
+      </div>
+
+      <div class="tab-content">
+        <h3>Image Optimization</h3>
+        <pre class="code-block"><code>images: {
+  enabled: true,
+  formats: ["webp", "avif"],
+  responsive: {
+    enabled: true,
+    breakpoints: [640, 768, 1024, 1280]
+  }
+}</code></pre>
+      </div>
+
+      <div class="tab-content">
+        <h3>SEO & Auditing</h3>
+        <pre class="code-block"><code>audit: {
+  enabled: true,
+  mode: "error" // or "warn"
+},
+sitemap: { enabled: true },
+robots: { enabled: true }</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="best-practices" class="guide-section">
+    <h2>Best Practices</h2>
+
+    <div class="practice-list">
+      <div class="practice-item">
+        <div class="practice-icon">🎯</div>
+        <div>
+          <h3>Use Semantic HTML</h3>
+          <p>Monad respects your markup. Use proper heading hierarchy and semantic elements.</p>
+        </div>
+      </div>
+      <div class="practice-item">
+        <div class="practice-icon">🚀</div>
+        <div>
+          <h3>Optimize Images</h3>
+          <p>Let Monad handle image optimization. Use high-quality sources and appropriate formats.</p>
+        </div>
+      </div>
+      <div class="practice-item">
+        <div class="practice-icon">📊</div>
+        <div>
+          <h3>Monitor Build Reports</h3>
+          <p>Check <code>dist/__monad/report.html</code> for SEO and performance insights.</p>
+        </div>
+      </div>
+      <div class="practice-item">
+        <div class="practice-icon">♻️</div>
+        <div>
+          <h3>Reuse Partials</h3>
+          <p>Create partials for repeated elements to maintain consistency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="deployment" class="guide-section">
+    <h2>Deployment</h2>
+
+    <div class="deployment-grid">
+      <div class="deploy-card">
+        <h3>Netlify</h3>
+        <p>Drop your <code>dist</code> folder or connect your repo.</p>
+        <code>Build command: npm run build</code>
+      </div>
+      <div class="deploy-card">
+        <h3>Vercel</h3>
+        <p>Import your project and Monad handles the rest.</p>
+        <code>Framework Preset: Other</code>
+      </div>
+      <div class="deploy-card">
+        <h3>GitHub Pages</h3>
+        <p>Use Actions to build and deploy automatically.</p>
+        <code>Upload dist/ as artifact</code>
+      </div>
+    </div>
+  </section>
+
+  <% cta_band.html, {
+    "title": "Ready to build something amazing?",
+    "buttonText": "Start Building",
+    "buttonHref": "https://github.com/anthropics/monad"
+  } %>
+</main>
+
+<style>
+  .guide-header {
+    text-align: center;
+    margin-bottom: 48px;
+    padding: 48px 0;
+    background: linear-gradient(135deg, var(--bgAlt), var(--bg));
+    border-radius: 24px;
+  }
+  .guide-nav {
+    background: var(--bgAlt);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 48px;
+  }
+  .guide-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .guide-section {
+    margin-bottom: 64px;
+  }
+  .step-card {
+    background: var(--bgAlt);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .step-number {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  .code-block {
+    background: #1a1a1a;
+    color: #22c55e;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-top: 16px;
+  }
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .concept-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+  }
+  .concept-card:hover {
+    transform: translateY(-2px);
+    border-color: #3b82f6;
+  }
+  .concept-link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .tab-content {
+    background: var(--bgAlt);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .practice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .practice-item {
+    display: flex;
+    gap: 16px;
+    align-items: start;
+  }
+  .practice-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+  .deployment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .deploy-card {
+    background: var(--bgAlt);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+  }
+  .deploy-card code {
+    display: block;
+    margin-top: 12px;
+    padding: 8px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 6px;
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 960px) {
+    .concept-grid { grid-template-columns: 1fr; }
+    .deployment-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<% footer.html %>

@@ -1,0 +1,51 @@
+{
+  "name": "@wynterai/vite-plugin-monad",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.1.0",
+  "description": "Monad ~ a Vite-powered static site generator plugin for composable marketing pages.",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "keywords": [
+    "vite",
+    "ssg",
+    "static-site-generator",
+    "html",
+    "marketing"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourname/monad.git"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --clean",
+    "dev": "tsup src/index.ts --format esm,cjs --watch"
+  },
+  "dependencies": {
+    "html-minifier-terser": "^7.2.0",
+    "json5": "^2.2.3",
+    "marked": "^14.1.4",
+    "node-html-parser": "^6.1.13"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.0"
+  },
+  "optionalDependencies": {
+    "og-gen": "^1.0.0",
+    "sharp": "^0.34.5"
+  }
+}

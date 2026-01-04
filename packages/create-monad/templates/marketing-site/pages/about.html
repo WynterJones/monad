@@ -1,0 +1,44 @@
+<!-- monad
+{
+  "title": "About — __PROJECT_NAME__",
+  "description": "Learn more about this Monad-powered site",
+  "layout": "layout.html"
+}
+-->
+<% header.html, { "active": "about" } %>
+
+<main class="container">
+  <section class="hero">
+    <div class="hero__copy">
+      <h1>About __PROJECT_NAME__</h1>
+      <p class="lede">
+        This site was built with Monad, a Vite-powered static site generator
+        that makes it easy to create fast, SEO-friendly marketing sites.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Getting Started</h2>
+    <p>Here are some things you can do next:</p>
+    <ul>
+      <li>Edit pages in the <code>pages/</code> directory</li>
+      <li>Create reusable components in <code>partials/</code></li>
+      <li>Add your styles in <code>src/</code></li>
+      <li>Configure your site in <code>vite.config.ts</code></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Features</h2>
+    <p>Your Monad site comes with:</p>
+    <div class="grid2">
+      <% feature_card.html, { "title": "Lightning Fast", "desc": "Static HTML with Vite-optimized assets for maximum performance." } %>
+      <% feature_card.html, { "title": "SEO Optimized", "desc": "Automatic sitemaps, robots.txt, and meta tag management." } %>
+      <% feature_card.html, { "title": "Developer Friendly", "desc": "Hot reload, TypeScript support, and modern tooling." } %>
+      <% feature_card.html, { "title": "Production Ready", "desc": "Built-in auditing and optimization for deployment." } %>
+    </div>
+  </section>
+</main>
+
+<% footer.html %>

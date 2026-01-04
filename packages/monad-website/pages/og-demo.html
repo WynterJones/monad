@@ -1,0 +1,58 @@
+<!-- monad
+{
+  "title": "OG Image Generation Demo - Monad",
+  "description": "See how Monad can automatically generate Open Graph images for your pages.",
+  "layout": "layout.html",
+  "og": {
+    "title": "OG Image Generation",
+    "subtitle": "Automatic social media images",
+    "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+  }
+}
+-->
+<% header.html, { "active": "og-demo" } %>
+
+<main class="container narrow">
+  <h1>Open Graph Image Generation</h1>
+  <p class="lede">
+    Monad can automatically generate beautiful Open Graph images for your pages using the og-gen library.
+  </p>
+
+  <section class="callout">
+    <h2>How it works</h2>
+    <p>Simply add OG metadata to your page frontmatter:</p>
+    <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto"><code>&lt;!-- monad
+{
+  "og": {
+    "title": "Your Page Title",
+    "subtitle": "A compelling subtitle",
+    "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+  }
+}
+--&gt;</code></pre>
+  </section>
+
+  <section class="mt-12">
+    <h2>Enable OG Generation</h2>
+    <p>In your <code>vite.config.ts</code>:</p>
+    <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto"><code>monad({
+  og: {
+    enabled: true,
+    provider: "og-gen",
+    mode: "per-route"
+  }
+})</code></pre>
+  </section>
+
+  <section class="mt-12">
+    <h2>Benefits</h2>
+    <ul>
+      <li>✅ Automatic generation at build time</li>
+      <li>✅ Consistent branding across all pages</li>
+      <li>✅ Better social media engagement</li>
+      <li>✅ No external services required</li>
+    </ul>
+  </section>
+</main>
+
+<% footer.html %>

@@ -1,0 +1,96 @@
+<!-- monad
+{
+  "title": "Monad — Vite-powered static marketing sites",
+  "description": "Build clean, fast multi-page marketing sites with layouts, partials, sitemaps, audits, and optional OG + Lighthouse.",
+  "layout": "layout.html",
+  "og": { "title": "Monad", "subtitle": "Static marketing pages, fast." }
+}
+-->
+<% header.html, { "active": "home" } %>
+
+<main class="container">
+  <section class="hero">
+    <div class="hero__copy">
+      <p class="pill">Open-source • Vite-powered • SSG</p>
+      <h1>Ship marketing pages in hours, not weekends.</h1>
+      <p class="lede">
+        Monad gives you layouts, reusable sections, sitemaps/robots, build audits, and optional OG + Lighthouse CI —
+        without turning your site into a framework project.
+      </p>
+      <div class="ctaRow">
+        <a class="btn btn--primary" href="https://github.com/anthropics/monad">Get Started</a>
+        <a class="btn btn--ghost" href="/about/">Why Monad</a>
+      </div>
+      <p class="fine">Built for static hosts: Netlify, Vercel, Cloudflare Pages, S3, GitHub Pages.</p>
+    </div>
+    <div class="hero__card">
+      <div class="codeCard">
+        <div class="codeCard__title">partials + data</div>
+        <pre><code>&lt;% header.html, { "active": "home" } %&gt;
+&lt;% feature_row.html, { "title": "Fast", "desc": "Vite assets + static HTML" } %&gt;</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Cards using Collections -->
+  <section class="grid3 mb-20">
+    <!-- monad:loop feature in features -->
+    <div class="feature-card animate-fade-in" style="animation-delay: {{@index}}00ms">
+      <div class="feature-icon">{{feature.icon}}</div>
+      <h3>{{feature.title}}</h3>
+      <p>{{feature.description}}</p>
+      <span class="feature-badge {{feature.status}}">{{feature.status}}</span>
+    </div>
+    <!-- monad:endloop -->
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section mb-20">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">⚡ 100</div>
+        <div class="stat-label">Lighthouse Score</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">&lt; 1s</div>
+        <div class="stat-label">Build Time</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">0 KB</div>
+        <div class="stat-label">JS by Default</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Carousel -->
+  <section class="testimonials-section mb-20">
+    <h2 class="text-center mb-12">What Developers Say</h2>
+    <div class="testimonials-grid">
+      <!-- monad:loop testimonial in testimonials -->
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <img src="{{testimonial.avatar}}" alt="{{testimonial.name}}" class="testimonial-avatar">
+          <div>
+            <h4>{{testimonial.name}}</h4>
+            <p class="testimonial-role">{{testimonial.role}} at {{testimonial.company}}</p>
+          </div>
+        </div>
+        <blockquote>"{{testimonial.quote}}"</blockquote>
+        <div class="star-rating">⭐⭐⭐⭐⭐</div>
+      </div>
+      <!-- monad:endloop -->
+    </div>
+  </section>
+
+  <div style="text-align: center; margin: 2rem 0;">
+    <p>Check out our <a href="/blog">blog</a> for the latest updates!</p>
+    <p><small>
+      Links: <a href="/about">About</a> | <a href="/collections-demo">Collections</a> |
+      <a href="/blog">Blog</a> | <a href="/nonexistent">Broken Link</a>
+    </small></p>
+  </div>
+
+  <% cta_band.html, { "title": "Ready to build your next landing page?", "buttonText": "Get Started", "buttonHref": "https://github.com/anthropics/monad" } %>
+</main>
+
+<% footer.html %>

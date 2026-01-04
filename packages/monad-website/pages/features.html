@@ -1,0 +1,152 @@
+<!-- monad
+{
+  "title": "Features - Monad",
+  "description": "Explore all the powerful features that Monad offers for building static sites.",
+  "layout": "layout.html",
+  "og": { "title": "Monad Features", "subtitle": "Everything you need for modern static sites" }
+}
+-->
+<% header.html, { "active": "features" } %>
+
+<main class="container">
+  <div class="text-center mb-16">
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">Monad Features</h1>
+    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+      Monad comes packed with features to make building static sites fast, efficient, and enjoyable.
+    </p>
+  </div>
+
+  <!-- Performance Features -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Performance Optimization</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-8">
+        <h3 class="text-xl font-semibold mb-4">⚡ Critical CSS Preloading</h3>
+        <p class="text-gray-700 mb-4">
+          Automatically extracts and preloads critical CSS for faster initial page renders.
+        </p>
+        <code class="block bg-white rounded p-2 text-sm">
+          &lt;link rel="preload" href="critical.css" as="style"&gt;
+        </code>
+      </div>
+      <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-8">
+        <h3 class="text-xl font-semibold mb-4">🖼️ Lazy Image Loading</h3>
+        <p class="text-gray-700 mb-4">
+          Images below the fold are automatically lazy-loaded with proper loading attributes.
+        </p>
+        <code class="block bg-white rounded p-2 text-sm">
+          &lt;img loading="lazy" fetchpriority="low"&gt;
+        </code>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Optimization Demo -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Image Optimization</h2>
+    <div class="bg-gray-100 rounded-lg p-8">
+      <p class="text-gray-700 mb-6">
+        Monad automatically optimizes images with WebP/AVIF conversion and responsive sizes:
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h4 class="font-semibold mb-2">Original Image</h4>
+          <img src="/images/demo-landscape.jpg" alt="Demo landscape" class="w-full rounded-lg shadow-md">
+        </div>
+        <div>
+          <h4 class="font-semibold mb-2">Optimized with srcset</h4>
+          <picture>
+            <source type="image/webp" srcset="/images/demo-landscape.webp">
+            <img src="/images/demo-landscape.jpg" alt="Demo landscape optimized" class="w-full rounded-lg shadow-md">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collections Feature -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Content Collections</h2>
+    <p class="text-gray-700 text-center mb-8 max-w-2xl mx-auto">
+      Manage repeating content with JSON data files. Perfect for testimonials, team members, and more.
+    </p>
+    <div class="bg-gray-900 text-white rounded-lg p-6 overflow-x-auto">
+      <pre><code>// collections.json
+{
+  "features": [
+    { "title": "Fast", "icon": "⚡" },
+    { "title": "Simple", "icon": "✨" }
+  ]
+}
+
+// In your template:
+&lt;!-- monad:loop item in features --&gt;
+  &lt;div&gt;{{item.icon}} {{item.title}}&lt;/div&gt;
+&lt;!-- monad:endloop --&gt;</code></pre>
+    </div>
+  </section>
+
+  <!-- Markdown Support -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Markdown Support</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-purple-50 rounded-lg p-8">
+        <h3 class="text-xl font-semibold mb-4">📝 GitHub Flavored Markdown</h3>
+        <ul class="space-y-2 text-gray-700">
+          <li>✓ Tables support</li>
+          <li>✓ Task lists</li>
+          <li>✓ Strikethrough text</li>
+          <li>✓ Autolink literals</li>
+        </ul>
+      </div>
+      <div class="bg-pink-50 rounded-lg p-8">
+        <h3 class="text-xl font-semibold mb-4">🎨 Smart Typography</h3>
+        <ul class="space-y-2 text-gray-700">
+          <li>✓ Smart quotes: "Hello"</li>
+          <li>✓ Em dashes: --</li>
+          <li>✓ Ellipsis: ...</li>
+          <li>✓ Typographic replacements</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Features -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">SEO & Auditing</h2>
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-green-500 text-white p-4">
+          <h3 class="text-xl font-semibold">Build-time SEO Audit</h3>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-700 mb-4">
+            Monad automatically checks your pages for common SEO issues:
+          </p>
+          <div class="space-y-2">
+            <div class="flex items-center">
+              <span class="text-green-500 mr-2">✓</span>
+              <span>Missing meta titles or descriptions</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-green-500 mr-2">✓</span>
+              <span>Duplicate H1 tags</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-green-500 mr-2">✓</span>
+              <span>Broken internal links</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-green-500 mr-2">✓</span>
+              <span>Missing canonical URLs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <% cta_band.html, { "title": "Ready to supercharge your static site?", "buttonText": "Get Started", "buttonHref": "https://github.com/anthropics/monad" } %>
+</main>
+
+<% footer.html %>

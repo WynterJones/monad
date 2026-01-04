@@ -1,0 +1,122 @@
+<!-- monad
+{
+  "title": "Collections Demo - Monad",
+  "description": "Demonstration of Monad's content collections feature with testimonials, features, and team members."
+}
+-->
+
+<main class="max-w-6xl mx-auto px-4 py-16">
+  <div class="text-center mb-16">
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">Collections Demo</h1>
+    <p class="text-xl text-gray-600">Showcasing Monad's powerful content collections feature</p>
+  </div>
+
+  <!-- Features Section using Collections -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Features</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- monad:loop feature in features -->
+      <div class="bg-white rounded-lg shadow-md p-6 text-center">
+        <div class="text-4xl mb-4">{{feature.icon}}</div>
+        <h3 class="text-xl font-semibold mb-2">{{feature.title}}</h3>
+        <p class="text-gray-600 mb-4">{{feature.description}}</p>
+        <span class="inline-block px-3 py-1 text-sm rounded-full
+               bg-blue-100 text-blue-800">{{feature.status}}</span>
+      </div>
+      <!-- monad:endloop -->
+    </div>
+  </section>
+
+  <!-- Testimonials Section using Collections -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">What Developers Say</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- monad:loop testimonial in testimonials -->
+      <div class="bg-gray-50 rounded-lg p-6">
+        <div class="flex items-center mb-4">
+          <img src="{{testimonial.avatar}}" alt="{{testimonial.name}}"
+               class="w-12 h-12 rounded-full mr-4 object-cover">
+          <div>
+            <h4 class="font-semibold">{{testimonial.name}}</h4>
+            <p class="text-sm text-gray-600">{{testimonial.role}} at {{testimonial.company}}</p>
+          </div>
+        </div>
+        <blockquote class="text-gray-700 italic mb-4">"{{testimonial.quote}}"</blockquote>
+        <div class="flex text-yellow-400">
+          <!-- Simple star rating based on rating number -->
+          ⭐⭐⭐⭐⭐
+        </div>
+      </div>
+      <!-- monad:endloop -->
+    </div>
+  </section>
+
+  <!-- Team Section using Collections -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Meet the Team</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <!-- monad:loop member in team -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="{{member.avatar}}" alt="{{member.name}}"
+             class="w-full h-64 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-1">{{member.name}}</h3>
+          <p class="text-blue-600 font-medium mb-3">{{member.role}}</p>
+          <p class="text-gray-600 mb-4">{{member.bio}}</p>
+          <div class="flex space-x-4">
+            <a href="https://twitter.com/{{member.social.twitter}}"
+               class="text-blue-400 hover:text-blue-600">Twitter</a>
+            <a href="https://github.com/{{member.social.github}}"
+               class="text-gray-700 hover:text-gray-900">GitHub</a>
+          </div>
+        </div>
+      </div>
+      <!-- monad:endloop -->
+    </div>
+  </section>
+
+  <!-- Loop Index Examples -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Loop Index Examples</h2>
+    <div class="bg-gray-100 rounded-lg p-6">
+      <h3 class="text-lg font-semibold mb-4">Features List with Index:</h3>
+      <ol class="space-y-2">
+        <!-- monad:loop feature in features -->
+        <li class="flex items-center">
+          <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">
+            {{@index1}}
+          </span>
+          <span>{{feature.title}}</span>
+        </li>
+        <!-- monad:endloop -->
+      </ol>
+    </div>
+  </section>
+
+  <!-- Code Examples -->
+  <section>
+    <h2 class="text-3xl font-bold text-center mb-12">How It Works</h2>
+    <div class="bg-gray-900 text-gray-100 rounded-lg p-6 overflow-x-auto">
+      <pre><code>// json
+{
+  "testimonials": [
+    {
+      "name": "Sarah Johnson",
+      "company": "TechCorp",
+      "quote": "Monad is amazing!",
+      "rating": 5
+    }
+  ]
+}
+
+// In your HTML template:
+&lt;!-- monad:loop testimonial in testimonials --&gt;
+  &lt;div class="testimonial"&gt;
+    &lt;h3&gt;{{testimonial.name}}&lt;/h3&gt;
+    &lt;p&gt;"{{testimonial.quote}}"&lt;/p&gt;
+    &lt;span&gt;Rating: {{testimonial.rating}}/5&lt;/span&gt;
+  &lt;/div&gt;
+&lt;!-- monad:endloop --&gt;</code></pre>
+    </div>
+  </section>
+</main>

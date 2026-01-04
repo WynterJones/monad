@@ -1,0 +1,31 @@
+<!-- monad
+{
+  "title": "About — Monad",
+  "description": "What Monad is and how it helps you build clean multi-page marketing sites.",
+  "layout": "layout.html",
+  "og": { "title": "About Monad", "subtitle": "Simple by design." }
+}
+-->
+<% header.html, { "active": "about" } %>
+
+<main class="container narrow">
+  <h1>Monad is a tiny SSG that stays out of your way.</h1>
+  <p class="lede">
+    You write HTML templates, compose them with partials, and let Vite bundle assets.
+    Monad stitches it into a clean static site, then runs an audit so you don’t forget the basics.
+  </p>
+
+  <section class="callout">
+    <h2>Philosophy</h2>
+    <ul>
+      <li><strong>HTML-first:</strong> templates you can reason about.</li>
+      <li><strong>Composable:</strong> reuse sections like Lego bricks.</li>
+      <li><strong>Marketing-ready:</strong> sitemap, robots, metadata, and audits.</li>
+      <li><strong>Optional power:</strong> OG images + Lighthouse CI when you want it.</li>
+    </ul>
+  </section>
+
+  <% cta_band.html, { "title": "Want a production-grade landing page build?", "buttonText": "Get Started", "buttonHref": "https://github.com/anthropics/monad" } %>
+</main>
+
+<% footer.html %>

@@ -1,0 +1,268 @@
+<!-- monad
+{
+  "title": "Use Cases - Monad",
+  "description": "Discover how Monad can power your next project",
+  "layout": "layout.html"
+}
+-->
+<% header.html, { "active": "use-cases" } %>
+
+<main class="container">
+  <div class="text-center mb-16">
+    <h1 class="text-4xl font-bold mb-4">Use Cases</h1>
+    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+      Monad is versatile enough to handle any static site project. Here are some popular use cases.
+    </p>
+  </div>
+
+  <!-- Use Cases Grid -->
+  <section class="use-cases-grid mb-20">
+    <!-- monad:loop useCase in useCases -->
+    <div class="use-case-card">
+      <div class="use-case-icon">{{useCase.icon}}</div>
+      <h3 class="use-case-title">{{useCase.title}}</h3>
+      <p class="use-case-description">{{useCase.description}}</p>
+
+      <div class="use-case-benefits">
+        <h4>Key Benefits:</h4>
+        <ul>
+          <!-- Note: Nested loops would require custom implementation -->
+          <li>{{useCase.benefits.[0]}}</li>
+          <li>{{useCase.benefits.[1]}}</li>
+          <li>{{useCase.benefits.[2]}}</li>
+        </ul>
+      </div>
+
+      <p class="use-case-example">
+        <strong>Examples:</strong> {{useCase.example}}
+      </p>
+    </div>
+    <!-- monad:endloop -->
+  </section>
+
+  <!-- Integrations Section -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Deploy Anywhere</h2>
+    <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+      Monad generates static files that can be deployed to any hosting platform. Here are some popular options:
+    </p>
+
+    <div class="integrations-grid">
+      <!-- monad:loop integration in integrations -->
+      <div class="integration-card {{integration.status}}">
+        <h3>{{integration.name}}</h3>
+        <span class="integration-type">{{integration.type}}</span>
+        <div class="integration-features">
+          <p class="features-label">Features:</p>
+          <ul>
+            <li>{{integration.features.[0]}}</li>
+            <li>{{integration.features.[1]}}</li>
+            <li>{{integration.features.[2]}}</li>
+          </ul>
+        </div>
+        <span class="integration-badge {{integration.status}}">
+          {{integration.status}}
+        </span>
+      </div>
+      <!-- monad:endloop -->
+    </div>
+  </section>
+
+  <!-- Success Stories -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Success Stories</h2>
+    <div class="stories-container">
+      <div class="story-card">
+        <blockquote>
+          "We migrated our entire marketing site to Monad and saw a 40% improvement in page load times. The build process is incredibly fast."
+        </blockquote>
+        <div class="story-author">
+          <strong>TechStartup Inc.</strong>
+          <span>B2B SaaS Platform</span>
+        </div>
+      </div>
+      <div class="story-card">
+        <blockquote>
+          "Monad's collections feature made it easy to manage our product catalog. We can update content without touching code."
+        </blockquote>
+        <div class="story-author">
+          <strong>E-commerce Co.</strong>
+          <span>Online Retailer</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <% cta_band.html, {
+    "title": "Ready to start your project?",
+    "buttonText": "Get Started",
+    "buttonHref": "https://github.com/anthropics/monad"
+  } %>
+</main>
+
+<style>
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .use-case-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 32px;
+    transition: all 0.3s ease;
+  }
+  .use-case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+    border-color: #3b82f6;
+  }
+  .use-case-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+  .use-case-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .use-case-description {
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .use-case-benefits {
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .use-case-benefits h4 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    color: #3b82f6;
+  }
+  .use-case-benefits ul {
+    list-style: none;
+    padding: 0;
+  }
+  .use-case-benefits li {
+    padding: 4px 0;
+    color: rgba(255,255,255,0.8);
+  }
+  .use-case-benefits li:before {
+    content: "✓ ";
+    color: #22c55e;
+    font-weight: bold;
+  }
+  .use-case-example {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .integration-card {
+    background: var(--bgAlt);
+    border: 2px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .integration-card:hover {
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+  }
+  .integration-card.official {
+    border-color: rgba(34, 197, 94, 0.5);
+  }
+  .integration-type {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .integration-features {
+    margin-top: 16px;
+  }
+  .features-label {
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .integration-features ul {
+    list-style: none;
+    padding: 0;
+  }
+  .integration-features li {
+    padding: 4px 0;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .integration-features li:before {
+    content: "• ";
+    color: #3b82f6;
+  }
+  .integration-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .integration-badge.official {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+  }
+  .integration-badge.community {
+    background: rgba(168, 85, 247, 0.2);
+    color: #a855f7;
+  }
+
+  .stories-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .story-card {
+    background: linear-gradient(135deg, var(--bgAlt), rgba(255,255,255,0.02));
+    border-radius: 20px;
+    padding: 32px;
+  }
+  .story-card blockquote {
+    font-size: 1.125rem;
+    font-style: italic;
+    margin-bottom: 24px;
+    color: rgba(255,255,255,0.9);
+  }
+  .story-author {
+    display: flex;
+    flex-direction: column;
+  }
+  .story-author strong {
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+  .story-author span {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 960px) {
+    .use-cases-grid { grid-template-columns: 1fr; }
+    .integrations-grid { grid-template-columns: 1fr; }
+    .stories-container { grid-template-columns: 1fr; }
+  }
+</style>
+
+<% footer.html %>

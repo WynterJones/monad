@@ -1,0 +1,45 @@
+{
+  "name": "@wynterai/create-monad",
+  "version": "1.0.0",
+  "description": "Create new Monad projects from templates",
+  "type": "module",
+  "bin": {
+    "create-monad": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "prompts": "^2.4.2",
+    "chalk": "^5.3.0",
+    "fs-extra": "^11.2.0",
+    "which-pm": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/prompts": "^2.4.9",
+    "@types/node": "^20.10.0",
+    "typescript": "^5.7.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wynterai/monad.git",
+    "directory": "packages/create-monad"
+  },
+  "keywords": [
+    "monad",
+    "vite",
+    "static-site-generator",
+    "template",
+    "cli"
+  ],
+  "author": "Wynter AI",
+  "license": "MIT"
+}

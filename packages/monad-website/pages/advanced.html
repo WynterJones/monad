@@ -1,0 +1,272 @@
+<!-- monad
+{
+  "title": "Advanced Techniques - Monad",
+  "description": "Learn advanced techniques for building powerful static sites with Monad.",
+  "layout": "layout.html",
+  "og": {
+    "title": "Advanced Monad Techniques",
+    "subtitle": "Take your static sites to the next level",
+    "image": "/images/og-advanced.png"
+  }
+}
+-->
+<% header.html, { "active": "advanced" } %>
+
+<main class="container">
+  <div class="text-center mb-16">
+    <h1 class="text-4xl font-bold mb-4">Advanced Monad Techniques</h1>
+    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+      Unlock the full potential of Monad with these advanced patterns and techniques.
+    </p>
+  </div>
+
+  <!-- Dynamic Partials with Complex Data -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Dynamic Partial Composition</h2>
+    <div class="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-lg p-8 mb-8">
+      <h3 class="text-2xl font-semibold mb-4 text-white">Nested Data Structures</h3>
+      <p class="text-gray-200 mb-6">
+        Pass complex data structures to partials for dynamic rendering:
+      </p>
+      <pre class="bg-black text-green-400 p-4 rounded overflow-x-auto"><code>&lt;% component.html, {
+  "theme": "dark",
+  "content": {
+    "title": "Advanced Features",
+    "items": ["Performance", "SEO", "DX"],
+    "config": { "showIcons": true }
+  }
+} %&gt;</code></pre>
+    </div>
+  </section>
+
+  <!-- Conditional Rendering Patterns -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Conditional Rendering</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-blue-50 rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4">Environment-based Content</h3>
+        <p class="text-gray-700 mb-4">
+          Use frontmatter to control content visibility:
+        </p>
+        <code class="block bg-white p-3 rounded text-sm">
+          "showBeta": process.env.NODE_ENV === "production"
+        </code>
+      </div>
+      <div class="bg-green-50 rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4">Feature Flags</h3>
+        <p class="text-gray-700 mb-4">
+          Toggle features using configuration:
+        </p>
+        <code class="block bg-white p-3 rounded text-sm">
+          "features": { "darkMode": true, "search": false }
+        </code>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advanced Collections Usage -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Advanced Collections</h2>
+
+    <div class="bg-gray-900 text-white rounded-lg p-8 mb-8">
+      <h3 class="text-2xl font-semibold mb-4">Filtered & Sorted Collections</h3>
+      <pre><code>// collections.json
+{
+  "products": [
+    { "name": "Pro", "price": 99, "featured": true },
+    { "name": "Basic", "price": 29, "featured": false }
+  ]
+}
+
+// Usage with index tracking:
+&lt;!-- monad:loop product in products --&gt;
+  &lt;div class="product-{{@index}}"&gt;
+    {{product.name}} - ${{product.price}}
+    Item {{@index1}} of {{products.length}}
+  &lt;/div&gt;
+&lt;!-- monad:endloop --&gt;</code></pre>
+    </div>
+  </section>
+
+  <!-- Performance Optimization Patterns -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Performance Patterns</h2>
+    <div class="performance-grid">
+      <div class="perf-card">
+        <div class="perf-icon">🚀</div>
+        <h3>Critical CSS Extraction</h3>
+        <p>Monad automatically identifies and preloads critical CSS for above-the-fold content.</p>
+        <div class="perf-metric">
+          <span class="metric-label">FCP Improvement</span>
+          <span class="metric-value">-300ms</span>
+        </div>
+      </div>
+      <div class="perf-card">
+        <div class="perf-icon">🖼️</div>
+        <h3>Responsive Image Sets</h3>
+        <p>Generate multiple image sizes and formats with automatic srcset generation.</p>
+        <div class="perf-metric">
+          <span class="metric-label">Image Size Reduction</span>
+          <span class="metric-value">-65%</span>
+        </div>
+      </div>
+      <div class="perf-card">
+        <div class="perf-icon">⚡</div>
+        <h3>Resource Hints</h3>
+        <p>Automatic preconnect, prefetch, and preload hints for optimal loading.</p>
+        <div class="perf-metric">
+          <span class="metric-label">Resource Load Time</span>
+          <span class="metric-value">-150ms</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Optimization Techniques -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">SEO Mastery</h2>
+    <div class="seo-features">
+      <div class="seo-card">
+        <h3>Structured Data</h3>
+        <p>Add JSON-LD structured data to your pages:</p>
+        <pre class="code-snippet"><code>{
+  "schema": {
+    "@type": "WebPage",
+    "name": "{{page.title}}",
+    "description": "{{page.description}}"
+  }
+}</code></pre>
+      </div>
+      <div class="seo-card">
+        <h3>Dynamic Meta Tags</h3>
+        <p>Generate context-aware meta tags:</p>
+        <pre class="code-snippet"><code>&lt;meta property="og:title"
+      content="{{page.og.title || page.title}}"&gt;
+&lt;meta name="twitter:card"
+      content="summary_large_image"&gt;</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Build Pipeline Integration -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold text-center mb-12">Build Pipeline Integration</h2>
+    <div class="pipeline-flow">
+      <div class="pipeline-step">
+        <div class="step-number">1</div>
+        <h3>Pre-build Hooks</h3>
+        <p>Run custom scripts before building</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="step-number">2</div>
+        <h3>Monad Build</h3>
+        <p>Generate optimized static files</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="step-number">3</div>
+        <h3>Post-build</h3>
+        <p>Run audits & deploy</p>
+      </div>
+    </div>
+  </section>
+
+  <% cta_band.html, {
+    "title": "Ready to build something amazing?",
+    "buttonText": "View Documentation",
+    "buttonHref": "https://github.com/anthropics/monad/blob/main/README.md"
+  } %>
+</main>
+
+<style>
+  /* Advanced Page Specific Styles */
+  .performance-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .perf-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+  }
+  .perf-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+  .perf-metric {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+  .metric-value {
+    font-weight: bold;
+    color: #22c55e;
+  }
+
+  .seo-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .seo-card {
+    background: var(--bgAlt);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .code-snippet {
+    background: #1a1a1a;
+    color: #22c55e;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 12px;
+    overflow-x: auto;
+  }
+
+  .pipeline-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin: 48px 0;
+  }
+  .pipeline-step {
+    background: var(--bgAlt);
+    border: 2px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    flex: 1;
+  }
+  .step-number {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-weight: bold;
+  }
+  .pipeline-arrow {
+    font-size: 2rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 960px) {
+    .performance-grid { grid-template-columns: 1fr; }
+    .seo-features { grid-template-columns: 1fr; }
+    .pipeline-flow { flex-direction: column; }
+    .pipeline-arrow { transform: rotate(90deg); }
+  }
+</style>
+
+<% footer.html %>

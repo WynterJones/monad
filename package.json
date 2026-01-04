@@ -1,0 +1,24 @@
+{
+  "name": "@wynterai/monad",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm -ws run build",
+    "dev": "npm -w monad-website run dev",
+    "preview": "npm -w monad-website run preview",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "node release/release-wrapper.js",
+    "release:patch": "node release/release-wrapper.js",
+    "release:minor": "node release/release-wrapper.js --minor",
+    "release:major": "node release/release-wrapper.js --major",
+    "release:dry-run": "node release/release-wrapper.js --dry-run"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.5.2",
+    "@changesets/cli": "^2.29.8",
+    "@types/html-minifier-terser": "^7.0.2"
+  }
+}
