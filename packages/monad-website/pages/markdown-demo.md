@@ -110,11 +110,6 @@ The HTML specification is maintained by the W3C.
 
 [1]: https://www.markdownguide.org/
 
-## Images with Captions
-
-![Monad Logo](/images/monad-logo.png)
-*The Monad logo - simple and elegant*
-
 ---
 
 **Note:** This page itself is written in Markdown and processed by Monad!

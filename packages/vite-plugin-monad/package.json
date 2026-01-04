@@ -30,8 +30,8 @@
     "url": "git+https://github.com/yourname/monad.git"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --clean",
-    "dev": "tsup src/index.ts --format esm,cjs --watch"
+    "build": "tsup src/index.ts --format esm,cjs --clean --external sharp",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --external sharp"
   },
   "dependencies": {
     "html-minifier-terser": "^7.2.0",

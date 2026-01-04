@@ -63,30 +63,6 @@
       "status": "stable"
     }
   ],
-  "team": [
-    {
-      "name": "Alex Thompson",
-      "role": "Founder",
-      "bio": "Full-stack developer passionate about performance and developer experience.",
-      "avatar": "/images/team-alex.jpg",
-      "social": {
-        "twitter": "@alexthompson",
-        "github": "alexthompson"
-      },
-      "skills": ["Architecture", "Performance", "DX"]
-    },
-    {
-      "name": "Jordan Kim",
-      "role": "Core Maintainer",
-      "bio": "Frontend specialist focused on build tools and optimization.",
-      "avatar": "/images/team-jordan.jpg",
-      "social": {
-        "twitter": "@jordankim",
-        "github": "jordankim"
-      },
-      "skills": ["Vite", "Build Tools", "TypeScript"]
-    }
-  ],
   "useCases": [
     {
       "title": "Marketing Sites",
