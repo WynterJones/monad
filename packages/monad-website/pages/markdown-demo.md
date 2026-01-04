@@ -14,9 +14,9 @@ This page demonstrates Monad's powerful Markdown support with GitHub Flavored Ma
 
 | Feature | Status | Performance Impact |
 |---------|--------|--------------------|
-| Markdown | ✅ Enabled | None |
-| Smart Quotes | ✅ Enabled | None |
-| Syntax Highlighting | 🔄 Optional | Minimal |
+| Markdown | Enabled | None |
+| Smart Quotes | Enabled | None |
+| Syntax Highlighting | Optional | Minimal |
 
 ### Task Lists
 
@@ -104,7 +104,7 @@ The HTML specification is maintained by the W3C.
 
 ## Links and References
 
-- [Monad GitHub Repository](https://github.com/anthropics/monad)
+- [Monad GitHub Repository](https://github.com/WynterJones/monad)
 - [Vite Documentation](https://vitejs.dev)
 - [Markdown Guide][1]
 

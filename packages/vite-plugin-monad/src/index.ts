@@ -311,8 +311,9 @@ function expandIncludes(params: {
   partialsDir: string;
   ctx: any;
   stack?: string[];
+  skipFinalInterpolation?: boolean;
 }): string {
-  const { partialsDir, ctx } = params;
+  const { partialsDir, ctx, skipFinalInterpolation } = params;
   const stack = params.stack ?? [];
   let html = params.html;
 
@@ -360,6 +361,10 @@ function expandIncludes(params: {
   });
 
   // After includes, do a final pass of interpolation for any remaining {{ }}.
+  // Skip this if caller will handle interpolation later (e.g., after collection loops)
+  if (skipFinalInterpolation) {
+    return html;
+  }
   return interpolateMustache(html, ctx);
 }
 
@@ -1345,6 +1350,11 @@ function generateResponsiveImages(html: string, options: {
       return; // Skip external and data URLs
     }
 
+    // Skip images with data-no-optimize attribute
+    if (img.hasAttribute('data-no-optimize')) {
+      return;
+    }
+
     const alt = img.getAttribute('alt') || '';
     const className = img.getAttribute('class') || '';
 
@@ -1418,7 +1428,11 @@ async function processImages(imagesToProcess: Array<{ src: string; formats: stri
   }
 
   for (const { src, formats } of imagesToProcess) {
-    const srcPath = path.resolve(root, 'src', src.replace(/^\//, ''));
+    // Try public/ first, then src/
+    let srcPath = path.resolve(root, 'public', src.replace(/^\//, ''));
+    if (!fs.existsSync(srcPath)) {
+      srcPath = path.resolve(root, 'src', src.replace(/^\//, ''));
+    }
     if (!fs.existsSync(srcPath)) {
       console.warn(`Image not found: ${srcPath}`);
       continue;
@@ -1598,12 +1612,21 @@ export default function monad(userOptions: MonadOptions): Plugin {
       };
 
       // Expand includes inside the page body
-      let renderedBody = expandIncludes({ html: pageBodyTemplate, partialsDir: partialsDirAbs, ctx });
+      // Skip final interpolation so collection loop variables ({{item.field}}) are preserved
+      let renderedBody = expandIncludes({
+        html: pageBodyTemplate,
+        partialsDir: partialsDirAbs,
+        ctx,
+        skipFinalInterpolation: options.collections?.enabled ?? false
+      });
 
       // Process collections if enabled
-      if (options.collections.enabled && Object.keys(collections).length > 0) {
+      if (options.collections?.enabled && Object.keys(collections).length > 0) {
         renderedBody = expandCollectionLoops(renderedBody, collections);
       }
+
+      // Final mustache interpolation (after collections are processed)
+      renderedBody = interpolateMustache(renderedBody, ctx);
 
       // Render layout
       const layoutRef = meta.layout ?? options.defaultLayout;

@@ -2,37 +2,37 @@
   "testimonials": [
     {
       "name": "Sarah Johnson",
+      "initials": "SJ",
       "company": "TechCorp",
       "role": "Lead Developer",
       "quote": "Monad has transformed how we build static sites. The performance optimizations and developer experience are unmatched.",
-      "avatar": "/images/avatar-sarah.jpg",
       "rating": 5,
       "featured": true
     },
     {
       "name": "Mike Chen",
+      "initials": "MC",
       "company": "StartupXYZ",
       "role": "CTO",
       "quote": "The content collections feature makes managing testimonials and blog posts a breeze. Highly recommended!",
-      "avatar": "/images/avatar-mike.jpg",
       "rating": 5,
       "featured": false
     },
     {
       "name": "Emily Rodriguez",
+      "initials": "ER",
       "company": "DesignStudio",
       "role": "Creative Director",
       "quote": "Image optimization is fantastic. Our site loads lightning fast with beautiful responsive images.",
-      "avatar": "/images/avatar-emily.jpg",
       "rating": 5,
       "featured": true
     },
     {
       "name": "David Park",
+      "initials": "DP",
       "company": "DevTools Inc",
       "role": "Senior Engineer",
       "quote": "Finally, a static site generator that doesn't get in the way. Monad is exactly what we needed.",
-      "avatar": "/images/avatar-david.jpg",
       "rating": 5,
       "featured": false
     }
@@ -41,25 +41,25 @@
     {
       "title": "Content Collections",
       "description": "Lightweight loop feature for repeated content like testimonials, blog posts, and team members.",
-      "icon": "📚",
+      "icon": "",
       "status": "new"
     },
     {
       "title": "Image Optimization",
       "description": "Automatic compression, modern format conversion (WebP, AVIF), and responsive image generation.",
-      "icon": "🖼️",
+      "icon": "",
       "status": "new"
     },
     {
       "title": "Performance Hints",
       "description": "Automatic preload for critical CSS, fetchpriority attributes, and lazy loading optimization.",
-      "icon": "⚡",
+      "icon": "",
       "status": "stable"
     },
     {
       "title": "Markdown Support",
       "description": "GitHub Flavored Markdown with YAML frontmatter and smart typography enhancements.",
-      "icon": "📝",
+      "icon": "",
       "status": "stable"
     }
   ],
@@ -91,21 +91,21 @@
     {
       "title": "Marketing Sites",
       "description": "Build fast, SEO-optimized marketing sites with ease",
-      "icon": "🚀",
+      "icon": "",
       "benefits": ["Fast load times", "SEO ready", "Easy deployment"],
       "example": "Landing pages, product sites, company websites"
     },
     {
       "title": "Documentation",
       "description": "Create beautiful documentation with Markdown support",
-      "icon": "📚",
+      "icon": "",
       "benefits": ["Markdown support", "Syntax highlighting", "Easy navigation"],
       "example": "API docs, user guides, knowledge bases"
     },
     {
       "title": "Blogs",
       "description": "Static blogs with collections and markdown",
-      "icon": "✍️",
+      "icon": "",
       "benefits": ["Fast rendering", "RSS feeds", "Categories & tags"],
       "example": "Personal blogs, company blogs, news sites"
     }

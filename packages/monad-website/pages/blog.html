@@ -1,0 +1,123 @@
+<!-- monad
+{
+  "title": "Blog - Monad",
+  "description": "Latest updates, tutorials, and announcements from the Monad team",
+  "layout": "layout.html",
+  "og": { "title": "Monad Blog", "subtitle": "News and updates" }
+}
+-->
+<% header.html, { "active": "blog" } %>
+
+<main class="container">
+  <div class="blog-hero">
+    <span class="blog-label">Blog</span>
+    <h1>Coming Soon</h1>
+    <p class="blog-intro">We're working on tutorials, guides, and updates about building static sites with Monad. Check back soon!</p>
+
+    <div class="blog-cta-buttons">
+      <a href="https://github.com/WynterJones/monad" class="cosmos-btn cosmos-btn--primary">
+        <span>View on GitHub</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <a href="/features/" class="cosmos-btn cosmos-btn--ghost">Explore Features</a>
+    </div>
+  </div>
+
+  <div class="blog-features">
+    <div class="blog-feature">
+      <h3>Tutorials</h3>
+      <p>Step-by-step guides to help you get the most out of Monad.</p>
+    </div>
+    <div class="blog-feature">
+      <h3>Updates</h3>
+      <p>Stay informed about new features and improvements.</p>
+    </div>
+    <div class="blog-feature">
+      <h3>Best Practices</h3>
+      <p>Tips and patterns for building production-ready static sites.</p>
+    </div>
+  </div>
+</main>
+
+<style>
+  .blog-hero {
+    text-align: center;
+    padding: 80px 0 64px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .blog-label {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--brand);
+    margin-bottom: 16px;
+  }
+
+  .blog-hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    margin: 0 0 20px;
+    background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.8) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .blog-intro {
+    font-size: 18px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 0 0 32px;
+  }
+
+  .blog-cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .blog-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 48px 0 80px;
+  }
+
+  .blog-feature {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 28px;
+    text-align: center;
+  }
+
+  .blog-feature h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+
+  .blog-feature p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 960px) {
+    .blog-features {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<% footer.html %>

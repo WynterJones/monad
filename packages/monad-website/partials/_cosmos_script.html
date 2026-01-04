@@ -1,0 +1,103 @@
+<script>
+(function() {
+  // Dynamic star generation
+  const starsContainer = document.getElementById('cosmosStars');
+  if (starsContainer) {
+    const starCount = 80;
+    const fragment = document.createDocumentFragment();
+
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.className = 'cosmos-dynamic-star';
+      star.style.cssText = `
+        position: absolute;
+        width: ${Math.random() * 2 + 1}px;
+        height: ${Math.random() * 2 + 1}px;
+        background: ${Math.random() > 0.8 ? 'rgba(110,231,255,0.8)' : Math.random() > 0.9 ? 'rgba(167,139,250,0.7)' : 'rgba(255,255,255,0.7)'};
+        border-radius: 50%;
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        animation: cosmos-star-twinkle ${2 + Math.random() * 4}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 2}s;
+        pointer-events: none;
+      `;
+      fragment.appendChild(star);
+    }
+    starsContainer.appendChild(fragment);
+  }
+
+  // Subtle parallax on mouse move
+  const cosmosSystem = document.querySelector('.cosmos-system');
+  const cosmosHero = document.querySelector('.cosmos-hero');
+
+  if (cosmosSystem && cosmosHero) {
+    let rafId = null;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    cosmosHero.addEventListener('mousemove', (e) => {
+      const rect = cosmosHero.getBoundingClientRect();
+      mouseX = (e.clientX - rect.left - rect.width / 2) / rect.width;
+      mouseY = (e.clientY - rect.top - rect.height / 2) / rect.height;
+
+      if (!rafId) {
+        rafId = requestAnimationFrame(() => {
+          cosmosSystem.style.transform = `translate(${mouseX * 15}px, ${mouseY * 15}px)`;
+          rafId = null;
+        });
+      }
+    });
+
+    cosmosHero.addEventListener('mouseleave', () => {
+      cosmosSystem.style.transition = 'transform 0.5s ease-out';
+      cosmosSystem.style.transform = 'translate(0, 0)';
+      setTimeout(() => {
+        cosmosSystem.style.transition = '';
+      }, 500);
+    });
+  }
+
+  // Add shooting star occasionally
+  function createShootingStar() {
+    const hero = document.querySelector('.cosmos-hero');
+    if (!hero) return;
+
+    const star = document.createElement('div');
+    star.style.cssText = `
+      position: absolute;
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+      left: ${Math.random() * 60 + 20}%;
+      top: ${Math.random() * 40}%;
+      transform: rotate(${Math.random() * 30 + 15}deg);
+      animation: cosmos-shooting-star 1s ease-out forwards;
+      pointer-events: none;
+      z-index: 1;
+    `;
+    hero.appendChild(star);
+
+    setTimeout(() => star.remove(), 1000);
+  }
+
+  // Random shooting stars
+  setInterval(() => {
+    if (Math.random() > 0.7) {
+      createShootingStar();
+    }
+  }, 3000);
+})();
+</script>
+
+<style>
+@keyframes cosmos-star-twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes cosmos-shooting-star {
+  0% { opacity: 0; transform: translateX(0) translateY(0) rotate(35deg); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(150px) translateY(100px) rotate(35deg); }
+}
+</style>

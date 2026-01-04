@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap');
+
 :root{
   --bg: #070b14;
+  --bg-deep: #030508;
   --panel: rgba(255,255,255,.06);
   --panel2: rgba(255,255,255,.10);
   --text: rgba(255,255,255,.92);
@@ -7,6 +10,11 @@
   --line: rgba(255,255,255,.14);
   --brand: #6ee7ff;
   --brand2: #a78bfa;
+  --sun-core: #fbbf24;
+  --sun-corona: #f97316;
+  --planet-cyan: #22d3ee;
+  --planet-purple: #a78bfa;
+  --planet-orange: #fb923c;
 }
 
 *{ box-sizing: border-box; }
@@ -16,6 +24,9 @@ body{
   background: radial-gradient(1200px 500px at 20% -20%, rgba(110,231,255,.18), transparent),
               radial-gradient(1200px 500px at 80% -30%, rgba(167,139,250,.16), transparent),
               var(--bg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
   color: var(--text);
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
 }
@@ -57,10 +68,8 @@ code{ color: rgba(255,255,255,.88); }
 .brand{ display:flex; align-items:center; gap: 10px; font-weight: 800; letter-spacing:.2px; }
 .brand__mark{
   width: 28px; height: 28px;
-  display:grid; place-items:center;
-  border-radius: 10px;
-  background: linear-gradient(135deg, rgba(110,231,255,.28), rgba(167,139,250,.22));
-  border: 1px solid var(--line);
+  border-radius: 8px;
+  object-fit: contain;
 }
 
 .nav{ display:flex; gap: 14px; }
@@ -140,6 +149,18 @@ pre{
   gap: 14px;
   padding: 22px 0 30px;
 }
+.grid2{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 22px 0 30px;
+}
+.grid4{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  padding: 22px 0 30px;
+}
 .card{
   border: 1px solid var(--line);
   background: rgba(255,255,255,.05);
@@ -196,7 +217,7 @@ pre{
   flex-wrap: wrap;
 }
 .footer__links{ display:flex; gap: 14px; color: rgba(255,255,255,.68); }
-.brand--footer .brand__mark{ width: 24px; height: 24px; border-radius: 10px; }
+.brand--footer .brand__mark{ width: 24px; height: 24px; border-radius: 6px; }
 
 /* New Enhanced Styles */
 .feature-card {
@@ -234,10 +255,10 @@ pre{
 
 /* Stats Section */
 .stats-section {
-  background: linear-gradient(135deg, var(--bgAlt), var(--bg));
-  padding: 48px 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent);
+  padding: 32px 0;
   border-radius: 24px;
-  margin: 48px 0;
+  margin: 0;
 }
 .stats-grid {
   display: grid;
@@ -246,7 +267,7 @@ pre{
   text-align: center;
 }
 .stat-card {
-  padding: 24px;
+  padding: 16px;
 }
 .stat-number {
   font-size: 2.5rem;
@@ -318,11 +339,900 @@ pre{
   animation: fade-in 0.6s ease-out forwards;
 }
 
+/* Utility classes */
+.text-center { text-align: center; }
+.mb-4 { margin-bottom: 16px; }
+.mb-6 { margin-bottom: 24px; }
+.mb-8 { margin-bottom: 32px; }
+.mb-12 { margin-bottom: 48px; }
+.mb-16 { margin-bottom: 64px; }
+.mb-20 { margin-bottom: 80px; }
+.mt-12 { margin-top: 48px; }
+
+/* Page headers */
+.page-header {
+  text-align: center;
+  padding: 48px 0 32px;
+}
+.page-header h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  margin: 0 0 16px;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.page-header p {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Section headers */
+.section-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.section-header h2 {
+  font-size: clamp(24px, 3vw, 36px);
+  margin: 0 0 12px;
+}
+.section-header p {
+  color: var(--muted);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Feature boxes for features page */
+.feature-box {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+}
+.feature-box h3 {
+  font-size: 18px;
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.feature-box p {
+  color: var(--muted);
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+.feature-box code {
+  display: block;
+  background: rgba(0,0,0,0.3);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  overflow-x: auto;
+}
+
+/* Code showcase */
+.code-showcase {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  overflow-x: auto;
+}
+.code-showcase pre {
+  margin: 0;
+  background: transparent;
+  padding: 0;
+}
+
+/* Checklist */
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.checklist li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  color: var(--muted);
+}
+.checklist li::before {
+  content: "✓";
+  color: #22c55e;
+  font-weight: bold;
+}
+
+/* Avatar placeholder */
+.avatar-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--bg);
+  flex-shrink: 0;
+}
+
+/* Updates/Blog Section */
+.updates-section {
+  padding: 24px 0;
+}
+
+.updates-card {
+  background: linear-gradient(135deg, rgba(110,231,255,0.08), rgba(167,139,250,0.06));
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.updates-label {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--brand);
+  margin-bottom: 12px;
+}
+
+.updates-heading {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  margin: 0 0 16px;
+  color: var(--text);
+}
+
+.updates-description {
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0 0 24px;
+  max-width: 480px;
+}
+
+.updates-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.update-link {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.update-link:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(110,231,255,0.3);
+  transform: translateX(4px);
+}
+
 /* Responsive Design */
 @media (max-width: 960px){
   .hero{ grid-template-columns: 1fr; }
   .grid3{ grid-template-columns: 1fr; }
+  .grid2{ grid-template-columns: 1fr; }
+  .grid4{ grid-template-columns: repeat(2, 1fr); }
   .faqGrid{ grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr; }
   .testimonials-grid { grid-template-columns: 1fr; }
+  .updates-card { grid-template-columns: 1fr; padding: 32px 24px; }
+}
+@media (max-width: 640px){
+  .grid4{ grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   COSMOS HERO - Solar System Theme
+   ============================================ */
+
+.cosmos-hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--bg-deep);
+  display: flex;
+  align-items: center;
+  padding: 80px 0 60px;
+}
+
+/* Star field */
+.cosmos-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.9), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 160px 120px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(2px 2px at 200px 50px, rgba(110,231,255,0.6), transparent),
+    radial-gradient(1px 1px at 250px 160px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 280px 90px, rgba(167,139,250,0.5), transparent),
+    radial-gradient(1px 1px at 320px 200px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(2px 2px at 380px 60px, rgba(255,255,255,0.4), transparent);
+  background-size: 400px 250px;
+  animation: cosmos-twinkle 8s ease-in-out infinite;
+}
+
+@keyframes cosmos-twinkle {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Nebula glow effects */
+.cosmos-nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  animation: cosmos-nebula-pulse 12s ease-in-out infinite;
+}
+
+.cosmos-nebula--cyan {
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(110,231,255,0.15) 0%, transparent 70%);
+  top: -10%;
+  right: 10%;
+}
+
+.cosmos-nebula--purple {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(167,139,250,0.12) 0%, transparent 70%);
+  bottom: 10%;
+  left: 5%;
+  animation-delay: -6s;
+}
+
+@keyframes cosmos-nebula-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Hero inner layout */
+.cosmos-hero__inner {
+  position: relative;
+  z-index: 2;
+  width: min(1400px, calc(100% - 48px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Copy section */
+.cosmos-hero__copy {
+  animation: cosmos-fade-up 1s ease-out;
+}
+
+@keyframes cosmos-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cosmos-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+
+.cosmos-pill__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand);
+  animation: cosmos-pulse 2s ease-in-out infinite;
+}
+
+@keyframes cosmos-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(110,231,255,0.4); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(110,231,255,0); }
+}
+
+.cosmos-headline {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(42px, 5vw, 72px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 24px;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.8) 50%, var(--brand) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cosmos-lede {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0 0 32px;
+  max-width: 520px;
+}
+
+.cosmos-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.cosmos-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.cosmos-btn--primary {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand2) 100%);
+  color: var(--bg);
+  border: none;
+  box-shadow: 0 4px 20px rgba(110,231,255,0.3), 0 0 40px rgba(110,231,255,0.1);
+}
+
+.cosmos-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(110,231,255,0.4), 0 0 60px rgba(110,231,255,0.2);
+}
+
+.cosmos-btn--primary svg {
+  transition: transform 0.3s ease;
+}
+
+.cosmos-btn--primary:hover svg {
+  transform: translateX(4px);
+}
+
+.cosmos-btn--ghost {
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.cosmos-btn--ghost:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.25);
+}
+
+.cosmos-fine {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  margin: 0;
+}
+
+/* Solar System */
+.cosmos-system {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  animation: cosmos-system-appear 1.2s ease-out 0.3s both;
+}
+
+@keyframes cosmos-system-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Orbital rings */
+.cosmos-orbit {
+  position: absolute;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cosmos-orbit--1 {
+  width: 55%;
+  height: 55%;
+  animation: cosmos-orbit-rotate 60s linear infinite;
+}
+
+.cosmos-orbit--2 {
+  width: 75%;
+  height: 75%;
+  animation: cosmos-orbit-rotate 90s linear infinite reverse;
+}
+
+.cosmos-orbit--3 {
+  width: 95%;
+  height: 95%;
+  animation: cosmos-orbit-rotate 120s linear infinite;
+}
+
+@keyframes cosmos-orbit-rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Central Sun */
+.cosmos-sun {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.cosmos-sun__core {
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%,
+    #fef3c7 0%,
+    var(--sun-core) 40%,
+    var(--sun-corona) 100%
+  );
+  box-shadow:
+    0 0 60px rgba(251,191,36,0.6),
+    0 0 120px rgba(251,191,36,0.3),
+    inset 0 0 30px rgba(255,255,255,0.3);
+  animation: cosmos-sun-pulse 4s ease-in-out infinite;
+}
+
+@keyframes cosmos-sun-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.cosmos-sun__glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251,191,36,0.4) 0%, transparent 70%);
+  animation: cosmos-sun-glow 3s ease-in-out infinite;
+}
+
+@keyframes cosmos-sun-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.cosmos-sun__corona {
+  position: absolute;
+  inset: -30px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249,115,22,0.2) 0%, transparent 60%);
+  animation: cosmos-corona-rotate 20s linear infinite;
+}
+
+@keyframes cosmos-corona-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.cosmos-sun__label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  color: var(--bg);
+  opacity: 0.8;
+  text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+/* Planets */
+.cosmos-planet {
+  position: absolute;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 5;
+  transition: z-index 0s 0.3s;
+}
+
+.cosmos-planet:hover {
+  z-index: 20;
+  transition: z-index 0s;
+}
+
+.cosmos-planet__body {
+  position: relative;
+  border-radius: 50%;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cosmos-planet:hover .cosmos-planet__body {
+  transform: scale(1.2);
+}
+
+.cosmos-planet__atmosphere {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.cosmos-planet:hover .cosmos-planet__atmosphere {
+  opacity: 1;
+}
+
+.cosmos-planet__surface {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* Features Planet (Cyan) - Top Right */
+.cosmos-planet--features {
+  top: 15%;
+  right: 8%;
+  animation: cosmos-float-1 6s ease-in-out infinite;
+}
+
+.cosmos-planet--features .cosmos-planet__body {
+  width: 80px;
+  height: 80px;
+}
+
+.cosmos-planet--features .cosmos-planet__surface {
+  background: radial-gradient(circle at 30% 30%,
+    #67e8f9 0%,
+    var(--planet-cyan) 50%,
+    #0891b2 100%
+  );
+  box-shadow:
+    0 0 30px rgba(34,211,238,0.4),
+    inset -10px -10px 20px rgba(0,0,0,0.3),
+    inset 5px 5px 15px rgba(255,255,255,0.2);
+}
+
+.cosmos-planet--features .cosmos-planet__atmosphere {
+  background: radial-gradient(circle, rgba(34,211,238,0.3) 0%, transparent 70%);
+  box-shadow: 0 0 40px rgba(34,211,238,0.4);
+}
+
+.cosmos-planet--features .cosmos-planet__ring {
+  position: absolute;
+  width: 140%;
+  height: 30%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(75deg);
+  border: 3px solid rgba(34,211,238,0.4);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(34,211,238,0.3);
+}
+
+@keyframes cosmos-float-1 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33% { transform: translateY(-12px) translateX(5px); }
+  66% { transform: translateY(8px) translateX(-8px); }
+}
+
+/* About Planet (Purple) - Bottom Left */
+.cosmos-planet--about {
+  bottom: 20%;
+  left: 10%;
+  animation: cosmos-float-2 7s ease-in-out infinite;
+}
+
+.cosmos-planet--about .cosmos-planet__body {
+  width: 70px;
+  height: 70px;
+}
+
+.cosmos-planet--about .cosmos-planet__surface {
+  background: radial-gradient(circle at 35% 35%,
+    #c4b5fd 0%,
+    var(--planet-purple) 50%,
+    #7c3aed 100%
+  );
+  box-shadow:
+    0 0 25px rgba(167,139,250,0.4),
+    inset -8px -8px 16px rgba(0,0,0,0.3),
+    inset 4px 4px 12px rgba(255,255,255,0.2);
+}
+
+.cosmos-planet--about .cosmos-planet__atmosphere {
+  background: radial-gradient(circle, rgba(167,139,250,0.3) 0%, transparent 70%);
+  box-shadow: 0 0 35px rgba(167,139,250,0.4);
+}
+
+@keyframes cosmos-float-2 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33% { transform: translateY(10px) translateX(-6px); }
+  66% { transform: translateY(-8px) translateX(10px); }
+}
+
+/* Advanced Planet (Orange) - Bottom Right */
+.cosmos-planet--advanced {
+  bottom: 8%;
+  right: 25%;
+  animation: cosmos-float-3 8s ease-in-out infinite;
+}
+
+.cosmos-planet--advanced .cosmos-planet__body {
+  width: 60px;
+  height: 60px;
+}
+
+.cosmos-planet--advanced .cosmos-planet__surface {
+  background: radial-gradient(circle at 30% 30%,
+    #fed7aa 0%,
+    var(--planet-orange) 50%,
+    #ea580c 100%
+  );
+  box-shadow:
+    0 0 20px rgba(251,146,60,0.4),
+    inset -6px -6px 14px rgba(0,0,0,0.3),
+    inset 3px 3px 10px rgba(255,255,255,0.2);
+}
+
+.cosmos-planet--advanced .cosmos-planet__atmosphere {
+  background: radial-gradient(circle, rgba(251,146,60,0.3) 0%, transparent 70%);
+  box-shadow: 0 0 30px rgba(251,146,60,0.4);
+}
+
+.cosmos-planet--advanced .cosmos-planet__crater {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 35%;
+  left: 25%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, transparent 70%);
+}
+
+@keyframes cosmos-float-3 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33% { transform: translateY(-15px) translateX(-4px); }
+  66% { transform: translateY(5px) translateX(12px); }
+}
+
+/* Planet Tooltips */
+.cosmos-planet__tooltip {
+  position: absolute;
+  bottom: calc(100% + 16px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  padding: 12px 18px;
+  background: rgba(7,11,20,0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.cosmos-planet__tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: rgba(255,255,255,0.12);
+}
+
+.cosmos-planet:hover .cosmos-planet__tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.cosmos-planet__tooltip-text {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.cosmos-planet__tooltip-desc {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.cosmos-planet--features:hover .cosmos-planet__tooltip {
+  border-color: rgba(34,211,238,0.3);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(34,211,238,0.2);
+}
+
+.cosmos-planet--about:hover .cosmos-planet__tooltip {
+  border-color: rgba(167,139,250,0.3);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(167,139,250,0.2);
+}
+
+.cosmos-planet--advanced:hover .cosmos-planet__tooltip {
+  border-color: rgba(251,146,60,0.3);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(251,146,60,0.2);
+}
+
+/* Asteroids */
+.cosmos-asteroid {
+  position: absolute;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cosmos-asteroid--1 {
+  width: 8px;
+  height: 8px;
+  top: 35%;
+  left: 20%;
+  animation: cosmos-asteroid-drift-1 15s linear infinite;
+}
+
+.cosmos-asteroid--2 {
+  width: 5px;
+  height: 5px;
+  top: 60%;
+  right: 15%;
+  animation: cosmos-asteroid-drift-2 20s linear infinite;
+}
+
+.cosmos-asteroid--3 {
+  width: 6px;
+  height: 6px;
+  top: 25%;
+  right: 30%;
+  animation: cosmos-asteroid-drift-3 18s linear infinite;
+}
+
+@keyframes cosmos-asteroid-drift-1 {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0.6; }
+  25% { transform: translate(30px, -20px) rotate(90deg); opacity: 0.8; }
+  50% { transform: translate(50px, 10px) rotate(180deg); opacity: 0.4; }
+  75% { transform: translate(20px, 30px) rotate(270deg); opacity: 0.7; }
+  100% { transform: translate(0, 0) rotate(360deg); opacity: 0.6; }
+}
+
+@keyframes cosmos-asteroid-drift-2 {
+  0% { transform: translate(0, 0); opacity: 0.5; }
+  50% { transform: translate(-40px, 25px); opacity: 0.8; }
+  100% { transform: translate(0, 0); opacity: 0.5; }
+}
+
+@keyframes cosmos-asteroid-drift-3 {
+  0% { transform: translate(0, 0); opacity: 0.7; }
+  33% { transform: translate(-20px, -30px); opacity: 0.4; }
+  66% { transform: translate(15px, -10px); opacity: 0.9; }
+  100% { transform: translate(0, 0); opacity: 0.7; }
+}
+
+/* Responsive Cosmos */
+@media (max-width: 1024px) {
+  .cosmos-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .cosmos-hero__copy {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cosmos-lede {
+    max-width: 100%;
+  }
+
+  .cosmos-cta {
+    justify-content: center;
+  }
+
+  .cosmos-system {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cosmos-hero {
+    min-height: auto;
+    padding: 100px 0 60px;
+  }
+
+  .cosmos-headline {
+    font-size: 36px;
+  }
+
+  .cosmos-system {
+    max-width: 320px;
+  }
+
+  .cosmos-sun {
+    width: 100px;
+    height: 100px;
+  }
+
+  .cosmos-sun__core {
+    inset: 15px;
+  }
+
+  .cosmos-sun__label {
+    font-size: 24px;
+  }
+
+  .cosmos-planet--features .cosmos-planet__body {
+    width: 55px;
+    height: 55px;
+  }
+
+  .cosmos-planet--about .cosmos-planet__body {
+    width: 50px;
+    height: 50px;
+  }
+
+  .cosmos-planet--advanced .cosmos-planet__body {
+    width: 45px;
+    height: 45px;
+  }
+
+  .cosmos-planet--features .cosmos-planet__ring {
+    width: 120%;
+    height: 25%;
+    border-width: 2px;
+  }
 }

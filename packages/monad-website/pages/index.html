@@ -8,35 +8,107 @@
 -->
 <% header.html, { "active": "home" } %>
 
-<main class="container">
-  <section class="hero">
-    <div class="hero__copy">
-      <p class="pill">Open-source • Vite-powered • SSG</p>
-      <h1>Ship marketing pages in hours, not weekends.</h1>
-      <p class="lede">
+<section class="cosmos-hero">
+  <!-- Star field background -->
+  <div class="cosmos-stars" id="cosmosStars"></div>
+
+  <!-- Nebula glow effects -->
+  <div class="cosmos-nebula cosmos-nebula--cyan"></div>
+  <div class="cosmos-nebula cosmos-nebula--purple"></div>
+
+  <div class="cosmos-hero__inner">
+    <!-- Left: Copy content -->
+    <div class="cosmos-hero__copy">
+      <p class="cosmos-pill">
+        <span class="cosmos-pill__dot"></span>
+        Open-source • Vite-powered • SSG
+      </p>
+      <h1 class="cosmos-headline">Ship marketing pages in hours, not weekends.</h1>
+      <p class="cosmos-lede">
         Monad gives you layouts, reusable sections, sitemaps/robots, build audits, and optional OG + Lighthouse CI —
         without turning your site into a framework project.
       </p>
-      <div class="ctaRow">
-        <a class="btn btn--primary" href="https://github.com/anthropics/monad">Get Started</a>
-        <a class="btn btn--ghost" href="/about/">Why Monad</a>
+      <div class="cosmos-cta">
+        <a class="cosmos-btn cosmos-btn--primary" href="https://github.com/WynterJones/monad">
+          <span>Get Started</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a class="cosmos-btn cosmos-btn--ghost" href="/about/">Why Monad</a>
       </div>
-      <p class="fine">Built for static hosts: Netlify, Vercel, Cloudflare Pages, S3, GitHub Pages.</p>
+      <p class="cosmos-fine">Built for static hosts: Netlify, Vercel, Cloudflare Pages, S3, GitHub Pages.</p>
     </div>
-    <div class="hero__card">
-      <div class="codeCard">
-        <div class="codeCard__title">partials + data</div>
-        <pre><code>&lt;% header.html, { "active": "home" } %&gt;
-&lt;% feature_row.html, { "title": "Fast", "desc": "Vite assets + static HTML" } %&gt;</code></pre>
+
+    <!-- Right: Solar System -->
+    <div class="cosmos-system">
+      <!-- Orbital rings -->
+      <div class="cosmos-orbit cosmos-orbit--1"></div>
+      <div class="cosmos-orbit cosmos-orbit--2"></div>
+      <div class="cosmos-orbit cosmos-orbit--3"></div>
+
+      <!-- Central Sun (Monad) -->
+      <div class="cosmos-sun">
+        <div class="cosmos-sun__core"></div>
+        <div class="cosmos-sun__glow"></div>
+        <div class="cosmos-sun__corona"></div>
+        <span class="cosmos-sun__label">◈</span>
       </div>
+
+      <!-- Planet: Features (Cyan) -->
+      <a href="/features/" class="cosmos-planet cosmos-planet--features" data-planet="features">
+        <div class="cosmos-planet__body">
+          <div class="cosmos-planet__atmosphere"></div>
+          <div class="cosmos-planet__surface"></div>
+          <div class="cosmos-planet__ring"></div>
+        </div>
+        <div class="cosmos-planet__tooltip">
+          <span class="cosmos-planet__tooltip-text">Features</span>
+          <span class="cosmos-planet__tooltip-desc">Explore capabilities</span>
+        </div>
+      </a>
+
+      <!-- Planet: About (Purple) -->
+      <a href="/about/" class="cosmos-planet cosmos-planet--about" data-planet="about">
+        <div class="cosmos-planet__body">
+          <div class="cosmos-planet__atmosphere"></div>
+          <div class="cosmos-planet__surface"></div>
+        </div>
+        <div class="cosmos-planet__tooltip">
+          <span class="cosmos-planet__tooltip-text">About</span>
+          <span class="cosmos-planet__tooltip-desc">Learn our story</span>
+        </div>
+      </a>
+
+      <!-- Planet: Advanced (Orange) -->
+      <a href="/advanced/" class="cosmos-planet cosmos-planet--advanced" data-planet="advanced">
+        <div class="cosmos-planet__body">
+          <div class="cosmos-planet__atmosphere"></div>
+          <div class="cosmos-planet__surface"></div>
+          <div class="cosmos-planet__crater"></div>
+        </div>
+        <div class="cosmos-planet__tooltip">
+          <span class="cosmos-planet__tooltip-text">Advanced</span>
+          <span class="cosmos-planet__tooltip-desc">Deep dive</span>
+        </div>
+      </a>
+
+      <!-- Floating asteroids -->
+      <div class="cosmos-asteroid cosmos-asteroid--1"></div>
+      <div class="cosmos-asteroid cosmos-asteroid--2"></div>
+      <div class="cosmos-asteroid cosmos-asteroid--3"></div>
     </div>
-  </section>
+  </div>
+
+  <% _cosmos_script.html %>
+</section>
+
+<main class="container">
 
   <!-- Feature Cards using Collections -->
-  <section class="grid3 mb-20">
+  <section class="grid2 mb-20">
     <!-- monad:loop feature in features -->
     <div class="feature-card animate-fade-in" style="animation-delay: {{@index}}00ms">
-      <div class="feature-icon">{{feature.icon}}</div>
       <h3>{{feature.title}}</h3>
       <p>{{feature.description}}</p>
       <span class="feature-badge {{feature.status}}">{{feature.status}}</span>
@@ -45,10 +117,10 @@
   </section>
 
   <!-- Stats Section -->
-  <section class="stats-section mb-20">
+  <section class="stats-section mb-12">
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-number">⚡ 100</div>
+        <div class="stat-number">100</div>
         <div class="stat-label">Lighthouse Score</div>
       </div>
       <div class="stat-card">
@@ -62,35 +134,29 @@
     </div>
   </section>
 
-  <!-- Testimonials Carousel -->
-  <section class="testimonials-section mb-20">
-    <h2 class="text-center mb-12">What Developers Say</h2>
-    <div class="testimonials-grid">
-      <!-- monad:loop testimonial in testimonials -->
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <img src="{{testimonial.avatar}}" alt="{{testimonial.name}}" class="testimonial-avatar">
-          <div>
-            <h4>{{testimonial.name}}</h4>
-            <p class="testimonial-role">{{testimonial.role}} at {{testimonial.company}}</p>
-          </div>
-        </div>
-        <blockquote>"{{testimonial.quote}}"</blockquote>
-        <div class="star-rating">⭐⭐⭐⭐⭐</div>
+  <!-- Latest Updates Section -->
+  <section class="updates-section mb-20">
+    <div class="updates-card">
+      <div class="updates-content">
+        <span class="updates-label">Stay Updated</span>
+        <h2 class="updates-heading">Latest from the Blog</h2>
+        <p class="updates-description">Discover tips, tutorials, and announcements about Monad. Learn how to build faster, more efficient static sites.</p>
+        <a href="/blog" class="cosmos-btn cosmos-btn--ghost">
+          <span>Read the Blog</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
       </div>
-      <!-- monad:endloop -->
+      <div class="updates-links">
+        <a href="/about" class="update-link">About Monad</a>
+        <a href="/features" class="update-link">Features</a>
+        <a href="/advanced" class="update-link">Advanced Techniques</a>
+      </div>
     </div>
   </section>
 
-  <div style="text-align: center; margin: 2rem 0;">
-    <p>Check out our <a href="/blog">blog</a> for the latest updates!</p>
-    <p><small>
-      Links: <a href="/about">About</a> | <a href="/collections-demo">Collections</a> |
-      <a href="/blog">Blog</a> | <a href="/nonexistent">Broken Link</a>
-    </small></p>
-  </div>
-
-  <% cta_band.html, { "title": "Ready to build your next landing page?", "buttonText": "Get Started", "buttonHref": "https://github.com/anthropics/monad" } %>
+  <% cta_band.html, { "title": "Ready to build your next landing page?", "buttonText": "Get Started", "buttonHref": "https://github.com/WynterJones/monad" } %>
 </main>
 
 <% footer.html %>
